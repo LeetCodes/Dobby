@@ -1,0 +1,86 @@
+html, body {
+  height:100%;
+  width:100%;
+  margin:0;
+}
+
+
+menu, .menu{
+  z-index:1;
+  position:fixed;
+}
+
+.menu.top-left {
+  left: 10px;
+  top: 10px;
+}
+
+.menu.bottom-left {
+  left: 10px;
+  bottom: 10px;
+}
+
+.menu.top-right {
+  right: 10px;
+  top: 10px;
+}
+
+.menu.bottom-right {
+  right: 10px;
+  bottom: 10px;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+#table {
+  width: 100%;
+  height: 100%;
+  background-color: #DDDDFF;
+  margin: auto;
+  display: flex;
+}
+
+#central-zone {
+  width: 50%;
+  height: 50%;
+  margin: auto;
+  vertical-align: center;
+  background-color: #EEEEFF;
+}
+
+#drag-me {
+  background-color: #4A412A;
+  width: 10%;
+  height: 8%;
+  position: absolute;
+}
+
+
+
+.fabSpeedDialdemoBasicUsage .text-capitalize {
+  text-transform: capitalize; }
+
+.fabSpeedDialdemoBasicUsage .md-fab:hover, .fabSpeedDialdemoBasicUsage .md-fab.md-focused {
+  background-color: #000 !important; }
+
+.fabSpeedDialdemoBasicUsage p.note {
+  font-size: 1.2rem; }
+
+.fabSpeedDialdemoBasicUsage .lock-size {
+  min-width: 300px;
+  min-height: 300px;
+  width: 300px;
+  height: 300px;
+  margin-left: auto;
+  margin-right: auto; }
+
+
+.ng-hide:not(.ng-hide-animate) {
+  /* this is just another form of hiding an element */
+  display: block!important;
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
