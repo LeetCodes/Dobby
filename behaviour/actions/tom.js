@@ -6,7 +6,7 @@
  */
 const formatUtil = require("../../utils/formatUtil");
 const winston = require('winston');
-const keywords = ["tom", "nain", "petit homme", "tomme", "dwarf", "minipouce", "BG"];
+const keywords = ["tom", "nain", "petit homme", "tomme", "dwarf", "minipouce", "bg"];
 const async = require('async');
 function condition (event, cb) {
   async.each(keywords, function(keyword, callback) {
