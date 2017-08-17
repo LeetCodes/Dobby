@@ -26,7 +26,7 @@ function call(callback) {
 function callAlways() {
   setInterval(()=> {
     call();
-  }, 1000*60*25);
+  }, 1000*60*5);
 }
 
 module.exports = {
