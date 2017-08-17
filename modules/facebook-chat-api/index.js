@@ -312,7 +312,17 @@ function loginHelper(appState, email, password, globalOptions, callback) {
   mainPromise = mainPromise
     .then(function(res) {
       let html = res.body;
-      let stuff = buildAPI(globalOptions, html, jar);
+      let stuff;
+      let done = false;
+      while (!done) {
+        try {
+          setTimeout(() => {
+            stuff = buildAPI(globalOptions, html, jar);
+            done = true;
+          }, 2000);
+        }
+      }
+
       ctx = stuff[0];
       defaultFuncs = stuff[1];
       api = stuff[2];
@@ -442,14 +452,7 @@ function login(loginData, options, callback) {
 
   setOptions(globalOptions, options);
 
-  try {
-    loginHelper(loginData.appState, loginData.email, loginData.password, globalOptions, callback);
-  } catch (e) {
-    return setTimeout(() => {
-      login(loginData, options, callback);
-    }, 2000);
-  }
-
+  loginHelper(loginData.appState, loginData.email, loginData.password, globalOptions, callback);
 }
 
 module.exports = login;
