@@ -7,5 +7,6 @@
 const mongoose = require('mongoose');
 const config = require('./config').database;
 
-let connect = "mongodb:"+config.username+":"+config.password+"@"+config.host+":"+config.port+"/"+config.name
+//mongodb://<dbuser>:<dbpassword>@ds145273.mlab.com:45273/tasabot
+let connect = "mongodb://"+config.username+":"+config.password+"@"+config.host+":"+config.port+"/"+config.name
 mongoose.connect(connect);
