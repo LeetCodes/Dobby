@@ -11,7 +11,16 @@ var routes = require('./routes/index');
 var users = require('./routes/user');
 var bot = require('./routes/bot');
 var botService = require('./behaviour/bot');
-botService.login();
+botService.login(function (err) {
+  if (err) {
+    winston.info("ERROR : Not logged to facebook, waiting...");
+    setTimeout(() => {
+      winston.info("Retry logging to Facebook");
+      botService.login();
+    }, 12000)
+  }
+
+});
 var app = express();
 var env = process.env.NODE_ENV || 'development';
 app.locals.ENV = env;

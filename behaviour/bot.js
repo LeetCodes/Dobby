@@ -24,7 +24,8 @@ function login(cb) {
   console.log(conf);
   loginModule({email: conf.fb.login, password: conf.fb.passwd}, (err, api) => {
     if (err) {
-      return log.error(err);
+      console.log("ERROR DUDE");
+      return cb(err);
     }
     apiInstance = api;
     storeAllUnreadMessagesFromLastThreads(5, function (err, res) {
