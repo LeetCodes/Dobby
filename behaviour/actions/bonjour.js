@@ -7,7 +7,7 @@
 const formatUtil = require("../../utils/formatUtil");
 const winston = require('winston');
 const roles = require('../../configurations/roles');
-const keywords = ["bonjour", "yo", "hello", "hi", "coucou"];
+const keywords = ["bonjour", "hello", "coucou"];
 const async = require('async');
 Array.prototype.contains = function(element){
   return this.indexOf(element) > -1;
@@ -15,7 +15,7 @@ Array.prototype.contains = function(element){
 
 function condition (event, cb) {
 	async.each(keywords, function(keyword, callback) {
-    if (formatUtil.formatSentence(event.body).includes(" "+keyword)) {
+    if (formatUtil.formatSentence(event.body).includes(keyword)) {
       cb(null, true);
     }
     callback();
@@ -33,7 +33,9 @@ function execution (event, bot, callback) {
       if (err) {
         return console.error(err);
       }
-      if (!res || res === false) {
+      if (res && res=== true) {
+        return bot.sendMessage("Bonjour Maître", event.threadID);
+      } else{
         if (name.includes("kevin")) {
           name = "Kevin 8)";
         } else if (name.includes("alicia")) {
@@ -52,8 +54,6 @@ function execution (event, bot, callback) {
         }
         sentence += name;
         bot.sendMessage(sentence, event.threadID);
-      } else if (res === true) {
-        return bot.sendMessage("Bonjour Maître", event.threadID);
       }
 
     });
@@ -62,6 +62,8 @@ function execution (event, bot, callback) {
 
 module.exports = {
   name: "bonjour",
+  description: "Il faut toujours dire bonjour",
+  case: "s'active quand quelqu'un dit bonjour",
   isAccepted: condition,
   execute: execution
 };

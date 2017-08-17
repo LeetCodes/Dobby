@@ -6,18 +6,24 @@
  */
 const formatUtil = require("../../utils/formatUtil");
 const winston = require('winston');
-
+const async = require('async');
+const roles = require('../../configurations/roles');
+let date;
 function condition (event, cb) {
-  cb(null, formatUtil.formatSentence(event.body).includes("badum"));
+  const millisecondsPerHour = 1000*60*60;
+  cb(null, formatUtil.formatSentence(event.body)===("bonne pls alicia") && ( !date || ((date.getTime() - new Date().getTime())/millisecondsPerHour)>2) );
 }
 
 function execution (event, bot, callback) {
   bot.sendMessage({
-    url: "https://www.youtube.com/watch?v=6zXDo4dL7SU"
+    body: "bonne pls alicia"
   }, event.threadID);
+  date = new Date();
 }
+
 module.exports = {
-  name: "badumtss",
+  name: "bonnepls",
+  description: "bonne pls alicia",
   isAccepted: condition,
   execute: execution
 };

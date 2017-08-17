@@ -20,7 +20,7 @@ function execution (event, bot, callback) {
         return console.error(err);
       }
       if (!res || res === false) {
-        return bot.sendMessage("Yes ?", event.threadID);
+        return bot.sendMessage("Hum ?", event.threadID);
       } else if (res === true) {
         return bot.sendMessage("Yes Master ?", event.threadID);
       }
@@ -33,6 +33,8 @@ function execution (event, bot, callback) {
 
 module.exports = {
   name: "dobby",
+  description: "It's me Dobbyyy",
+  case: "Dobby réagit quand on parle de lui",
   isAccepted: condition,
   execute: execution
 };

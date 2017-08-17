@@ -20,6 +20,7 @@ function execution (event, bot, callback) {
 }
 module.exports = {
   name: "random",
+  description: "/random",
   isAccepted: condition,
   execute: execution
 };

@@ -46,6 +46,7 @@ function execution (event, bot, callback) {
 }
 module.exports = {
   name: "memegenerator",
+  description: "réagit aux appels de memes",
   isAccepted: condition,
   execute: execution
 };

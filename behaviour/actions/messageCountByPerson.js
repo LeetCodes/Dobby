@@ -51,6 +51,7 @@ function filterTop(top, bot, callback) {
 }
 module.exports = {
   name: "messageCount",
+  description:"/topspammers",
   isAccepted: condition,
   execute: execution
 };

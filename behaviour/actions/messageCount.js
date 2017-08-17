@@ -24,6 +24,7 @@ function execution (event, bot, callback) {
 
 module.exports = {
   name: "messageCount",
+  description: "le message contient 'message count'",
   isAccepted: condition,
   execute: execution
 };

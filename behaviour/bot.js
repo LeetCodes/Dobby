@@ -4,7 +4,7 @@
   * @author Alexandre CAZALA <alexandre.cazala@gmail.com>
   * @date 04/07/2017
   */
-const loginModule = require("facebook-chat-api");
+const loginModule = require("../modules/facebook-chat-api");
 const conf = require("../configurations/config.secret");
 const log = require("../loggers/winston-logger");
 const async = require("async");
@@ -16,6 +16,7 @@ let apiInstance = null;
 let listeningProfile = null;
 let listening = false;
 let first = true;
+let started = false;
 /* ************** */
 /* PUBLIC METHODS */
 /* ************** */
@@ -33,6 +34,7 @@ function login(cb) {
         }
       }
       log.info("All messages stored");
+      started = true;
       listen();
       if (cb) {
         cb();
@@ -40,38 +42,48 @@ function login(cb) {
     })
   })
 }
-
 function listen() {
   listeningProfile = apiInstance.listen((err, event) => {
     if (err) {
       return log.error(err);
     }
-    listening = true;
-    if (first) {
-      sendMessage("Dobby is back", event.threadID);
-      first = false;
-    }
-    apiInstance.markAsRead(event.threadID, (err) => {
-      if (err) console.error(err);
-    });
+    listening =true;
+
     switch (event.type) {
       case "message":
+        log.debug(event);
+        if (started) {
+          if (first) {
+            sendMessage("Dobby is back", event.threadID);
+            first = false;
+          }
+          apiInstance.markAsRead(event.threadID, (err) => {
+            if (err) console.error(err);
+          });
+          checkMessage(event);
+        } else {
+          log.info("Not started yet");
+          if (event.body === "/start") {
+            start();
+          }
+        }
         conversationDAO.saveMessage(event, event.threadID, function (err, ret) {
           if (err) {
-            sendMessage("Master, there was an error, could you look at my logs ?");
-            console.error(err);
+            return console.error(err);
           }
         });
-        verifyMessage(event);
         break;
       case "event":
+        console.log(event);
+        console.log();
+        console.log();
         break;
     }
   })
 }
 
 
-function verifyMessage(event) {
+function checkMessage(event) {
   const message = event.body.trim().toLowerCase();
   if (message && message !== "") {
     actions.checkAndExecuteAction(event, botModule, function (err2, result) {
@@ -82,6 +94,13 @@ function verifyMessage(event) {
   } else {
     log.debug("[VERIFY MESSAGE] Message is undefined or null");
   }
+}
+
+function start() {
+  log.info("Dobby is starting");
+  started = true;
+  listening = true;
+  first = true;
 }
 function isAuthenticated(cb) {
   return apiInstance !== null;
@@ -124,7 +143,7 @@ function saveAllUnreadMessages(threadID, callback) {
     if (err) return callback(err);
     else {
       conversationDAO.getLastMessageDate(threadID, function (err, date) {
-        console.log("DATE : "+date);
+        log.debug("DATE : "+date);
         getAllMessages(threadID, date, function (err, messages) {
           if (err) { return callback(err)}
           callback();
@@ -227,35 +246,20 @@ function getSenderName(senderID, cb) {
     cb(null, obj);
   })
 }
-function isSenderAdmin(senderId, callback) {
-  return async.each(conf.admins, function (item, callback) {
-    if (item === senderId) {
-      callback(true)
-    } else {
-      callback(false);
-    }
 
-  }, function(ret) {
-    if (ret) {
-      log.info("User is admin");
-      return callback(ret);
-    } else {
-      log.info("User is not admin");
-    }
-  })
-}
 function setMessageReaction(reaction, messageID) {
   apiInstance.setMessageReaction(reaction, messageID);
 }
+
 function getThreadInfo(threadID, callback) {
   apiInstance.getThreadInfo(threadID, callback)
 }
+
 function stop() {
-  console.log("Bot is stopping");
-  listening = false;
-  first = true;
-  return listeningProfile();
+  log.info("Dobby is stopping");
+  started = false;
 }
+
 function getProfilePicture(senderID, callback) {
   apiInstance.getUserInfo(senderID, function (err, obj) {
     if (err) {

@@ -23,6 +23,7 @@ function execution (event, bot, callback) {
 
 module.exports = {
     name: "stop",
+    description: "/stop",
     isAccepted: condition,
     execute: execution
 };

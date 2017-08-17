@@ -20,7 +20,8 @@ function execution (event, bot, callback) {
   });
 }
 module.exports = {
-  name: "random",
+  name: "randomMeme",
+  description: "/meme",
   isAccepted: condition,
   execute: execution
 };

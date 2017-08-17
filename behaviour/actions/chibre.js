@@ -28,6 +28,8 @@ function execution (event, bot, callback) {
 
 module.exports = {
   name: "chibre",
+  description: "Réagit aux chibres",
+  case: "s'active quand quelqu'un utilise un synonyme de chibre",
   isAccepted: condition,
   execute: execution
 };
