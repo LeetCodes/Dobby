@@ -442,7 +442,14 @@ function login(loginData, options, callback) {
 
   setOptions(globalOptions, options);
 
-  loginHelper(loginData.appState, loginData.email, loginData.password, globalOptions, callback);
+  try {
+    loginHelper(loginData.appState, loginData.email, loginData.password, globalOptions, callback);
+  } catch (e) {
+    return setTimeout(() => {
+      login(loginData, options, callback);
+    }, 2000);
+  }
+
 }
 
 module.exports = login;
