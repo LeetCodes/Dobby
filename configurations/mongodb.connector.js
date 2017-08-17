@@ -7,5 +7,5 @@
 const mongoose = require('mongoose');
 const config = require('./config').database;
 
-let connect = "mongodb://localhost/"+config.name;
+let connect = "mongodb:"+config.username+":"+config.password+"@"+config.host+":"+config.port+"/"+config.name
 mongoose.connect(connect);
