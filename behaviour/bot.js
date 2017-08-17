@@ -5,7 +5,7 @@
   * @date 04/07/2017
   */
 const loginModule = require("../modules/facebook-chat-api");
-const conf = require("../configurations/config.secret");
+const conf = require("../configurations/config");
 const log = require("../loggers/winston-logger");
 const async = require("async");
 const memeGenerator = require('../services/memes');
@@ -21,6 +21,7 @@ let started = false;
 /* PUBLIC METHODS */
 /* ************** */
 function login(cb) {
+  console.log(conf);
   loginModule({email: conf.fb.login, password: conf.fb.passwd}, (err, api) => {
     if (err) {
       return log.error(err);
