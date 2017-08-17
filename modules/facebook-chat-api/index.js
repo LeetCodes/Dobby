@@ -312,20 +312,7 @@ function loginHelper(appState, email, password, globalOptions, callback) {
   mainPromise = mainPromise
     .then(function(res) {
       let html = res.body;
-      let stuff;
-      let done = false;
-      while (!done) {
-        try {
-          setTimeout(() => {
-            stuff = buildAPI(globalOptions, html, jar);
-            done = true;
-          }, 2000);
-        } catch (e) {
-          done = false;
-
-        }
-      }
-
+      let stuff = buildAPI(globalOptions, html, jar);
       ctx = stuff[0];
       defaultFuncs = stuff[1];
       api = stuff[2];
