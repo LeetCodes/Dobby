@@ -6,5 +6,5 @@ var router = express.Router();
 var controller = require('../controllers/bot');
 
 router.get('/start141', controller.startBot);
-
+router.get('/hello', controller.hello);
 module.exports = router;

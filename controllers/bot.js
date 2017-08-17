@@ -5,7 +5,8 @@ const logger = require("winston");
 let bot = require('../behaviour/bot');
 
 module.exports = {
-  startBot: startBotImpl
+  startBot: startBotImpl,
+  hello: hello
 };
 
 function startBotImpl (req, res, next) {
@@ -21,4 +22,9 @@ function startBotImpl (req, res, next) {
       return res.send("Already started and listening");
     }
   }
+}
+
+function hello(req, res, next) {
+  console.log("HEROKU HACK");
+  res.send("{status: 'OK'}");
 }

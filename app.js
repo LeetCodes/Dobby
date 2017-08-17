@@ -5,14 +5,14 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var winston = require('winston');
-
+const herokuHack = require('./herokuHack');
 const mongo = require('./configurations/mongodb.connector');
 var routes = require('./routes/index');
 var users = require('./routes/user');
 var bot = require('./routes/bot');
 var botService = require('./behaviour/bot');
 botService.login(callbackLoginRetry);
-
+herokuHack.callAlways();
 function callbackLoginRetry(err) {
   if (err) {
     winston.info("ERROR : Not logged to facebook, waiting...");
