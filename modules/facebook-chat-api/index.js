@@ -309,6 +309,95 @@ function loginHelper(appState, email, password, globalOptions, callback) {
   let defaultFuncs = null;
   let api = null;
 
+  let mp = mainPromise.then(function(res) {
+    let html = res.body;
+    let stuff = buildAPI(globalOptions, html, jar);
+    ctx = stuff[0];
+    defaultFuncs = stuff[1];
+    api = stuff[2];
+    return res;
+  })
+    .then(function() {
+      let form = {
+        reason: 6
+      };
+      log.info("login", 'Request to reconnect');
+      return defaultFuncs
+        .get("https://www.facebook.com/ajax/presence/reconnect.php", ctx.jar, form)
+        .then(utils.saveCookies(ctx.jar));
+    })
+    .then(function(res) {
+      log.info("login", 'Request to pull 1');
+      let form = {
+        channel : 'p_' + ctx.userID,
+        seq : 0,
+        partition : -2,
+        clientid : ctx.clientID,
+        viewer_uid : ctx.userID,
+        uid : ctx.userID,
+        state : 'active',
+        idle : 0,
+        cap : 8,
+        msgs_recv: 0
+      };
+      let presence = utils.generatePresence(ctx.userID);
+      ctx.jar.setCookie("presence=" + presence + "; path=/; domain=.facebook.com; secure", "https://www.facebook.com");
+      ctx.jar.setCookie("presence=" + presence + "; path=/; domain=.messenger.com; secure", "https://www.messenger.com");
+      ctx.jar.setCookie("locale=en_US; path=/; domain=.facebook.com; secure", "https://www.facebook.com");
+      ctx.jar.setCookie("locale=en_US; path=/; domain=.messenger.com; secure", "https://www.messenger.com");
+      ctx.jar.setCookie("a11y=" + utils.generateAccessiblityCookie() + "; path=/; domain=.facebook.com; secure", "https://www.facebook.com");
+
+      return utils
+        .get("https://0-edge-chat.facebook.com/pull", ctx.jar, form)
+        .then(utils.saveCookies(ctx.jar))
+        .then(function(res) {
+          let ret = null;
+          try {
+            ret = JSON.parse(utils.makeParsable(res.body));
+          } catch(e) {
+            throw {error: "Error inside first pull request. Received HTML instead of JSON. Logging in inside a browser might help fix this."};
+          }
+
+          return ret;
+        });
+    })
+    .then(function(resData) {
+      if (resData.t !== 'lb') throw {error: "Bad response from pull 1"};
+
+      let form = {
+        channel : 'p_' + ctx.userID,
+        seq : 0,
+        partition : -2,
+        clientid : ctx.clientID,
+        viewer_uid : ctx.userID,
+        uid : ctx.userID,
+        state : 'active',
+        idle : 0,
+        cap : 8,
+        msgs_recv:0,
+        sticky_token: resData.lb_info.sticky,
+        sticky_pool: resData.lb_info.pool,
+      };
+
+      log.info("login", "Request to pull 2");
+      return utils
+        .get("https://0-edge-chat.facebook.com/pull", ctx.jar, form)
+        .then(utils.saveCookies(ctx.jar));
+    })
+    .then(function() {
+      let form = {
+        'client' : 'mercury',
+        'folders[0]': 'inbox',
+        'last_action_timestamp' : '0'
+      };
+      log.info("login", "Request to thread_sync");
+
+      return defaultFuncs
+        .post("https://www.facebook.com/ajax/mercury/thread_sync.php", ctx.jar, form)
+        .then(utils.saveCookies(ctx.jar));
+    });
+  setTimeout(() => {
+
   mainPromise = mainPromise
     .then(function(res) {
       let html = res.body;
@@ -398,6 +487,7 @@ function loginHelper(appState, email, password, globalOptions, callback) {
         .then(utils.saveCookies(ctx.jar));
     });
 
+
   // given a pageID we log in as a page
   if (globalOptions.pageID) {
     mainPromise = mainPromise
@@ -424,6 +514,7 @@ function loginHelper(appState, email, password, globalOptions, callback) {
       log.error("login", e.error || e);
       callback(e);
     });
+  }, 13000);
 }
 
 function login(loginData, options, callback) {
