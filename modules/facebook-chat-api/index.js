@@ -320,6 +320,9 @@ function loginHelper(appState, email, password, globalOptions, callback) {
             stuff = buildAPI(globalOptions, html, jar);
             done = true;
           }, 2000);
+        } catch (e) {
+          done = false;
+
         }
       }
 
