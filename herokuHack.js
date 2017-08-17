@@ -8,7 +8,7 @@ const http = require('http');
 
 function call(callback) {
   const options = {
-    host: 'localhost',
+    host: 'dobby141.herokuapp.com',
     path: '/bot/hello',
     method: 'GET',
     headers: {
@@ -25,6 +25,9 @@ function call(callback) {
 
 function callAlways() {
   setInterval(()=> {
+    console.log();
+    console.log("HEROKU HACK");
+    console.log();
     call();
   }, 1000*60*5);
 }
