@@ -6,7 +6,7 @@
  */
 const http = require('http');
 
-function call(callback) {
+function call() {
   const options = {
     host: 'dobby141.herokuapp.com',
     path: '/bot/hello',
@@ -24,12 +24,13 @@ function call(callback) {
 }
 
 function callAlways() {
+  console.log("CALL ALWAYS");
   setInterval(()=> {
     console.log();
     console.log("HEROKU HACK");
     console.log();
     call();
-  }, 1000*60*5);
+  }, 1000*60*2);
 }
 
 module.exports = {
