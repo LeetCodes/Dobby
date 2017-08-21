@@ -24,10 +24,7 @@ function execution (event, bot, callback) {
       } else if (res === true) {
         return bot.sendMessage("Yes Master ?", event.threadID);
       }
-
     });
-  } else {
-    bot.sendMessage("It's me Dobbyyy", event.threadID);
   }
 }
 
