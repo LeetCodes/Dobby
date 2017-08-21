@@ -21,6 +21,7 @@ function condition (event, cb) {
       }
       callback();
     });
+    lastMessageDate = new Date();
   }
 }
 
