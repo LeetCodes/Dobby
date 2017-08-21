@@ -15,14 +15,12 @@ Array.prototype.contains = function(element){
   return this.indexOf(element) > -1;
 };
 function condition (event, cb) {
-
     async.each(keywords, function(keyword, callback) {
       if (formatUtil.formatSentence(event.body).includes(" "+keyword)) {
         cb(null, true);
       }
       callback();
     });
-
 }
 
 function execution (event, bot, callback) {

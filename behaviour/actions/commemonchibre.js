@@ -21,15 +21,16 @@ function condition (event, cb) {
       }
       callback();
     });
-    lastMessageDate = new Date();
   }
 }
 
 function execution (event, bot, callback) {
-  winston.info("Executing message count action");
-  bot.setMessageReaction(":wow:", event.messageID);
-  bot.sendMessage("Comme mon chibre", event.threadID);
-  lastMessageDate = new Date();
+  if (!dateUtil.isFlooding(lastMessageDate)) {
+    winston.info("Executing message count action");
+    bot.setMessageReaction(":wow:", event.messageID);
+    bot.sendMessage("Comme mon chibre", event.threadID);
+    lastMessageDate = new Date();
+  }
 }
 
 module.exports = {
