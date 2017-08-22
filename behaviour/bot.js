@@ -114,7 +114,9 @@ function sendMessage(message, threadId, cb) {
   if (!isAuthenticated()) {
     return log.log('error', "Bot not authenticated");
   }
-  apiInstance.sendMessage(message, threadId, cb);
+  apiInstance.sendMessage(message, threadId, () => {
+    log.info("Message envoyé au thread " + threadId + " : " + message);
+  });
 }
 
 function storeAllUnreadMessagesFromLastThreads(numberOfThreads, callback) {

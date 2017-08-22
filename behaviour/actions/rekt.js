@@ -43,8 +43,6 @@ function execution (event, bot, callback) {
     case "t":
       triggered = true;
       bot.sendMessage("REKT", event.threadID);
-      break;
-    case "rekt":
       bot.sendMessage({
         url: "https://media.giphy.com/media/EldfH1VJdbrwY/giphy.gif"
       }, event.threadID);
