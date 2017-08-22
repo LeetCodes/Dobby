@@ -44,7 +44,7 @@ function execution (event, bot, callback) {
       triggered = true;
       bot.sendMessage("REKT", event.threadID);
       bot.sendMessage({
-        url: "https://media.giphy.com/media/EldfH1VJdbrwY/giphy.gif"
+        url: "http://i.imgur.com/WrKPhfd.gif"
       }, event.threadID);
       triggered = false;
       break;
