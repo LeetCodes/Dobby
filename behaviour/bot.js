@@ -15,7 +15,6 @@ let actions = require('./actions');
 let apiInstance = null;
 let listeningProfile = null;
 let listening = false;
-let first = true;
 let started = false;
 /* ************** */
 /* PUBLIC METHODS */
@@ -24,7 +23,7 @@ function login(cb) {
   console.log(conf);
   loginModule({email: conf.fb.login, password: conf.fb.passwd}, (err, api) => {
     if (err) {
-      console.log("ERROR DUDE");
+      log.error(err);
       return cb(err);
     }
     apiInstance = api;
@@ -55,14 +54,14 @@ function listen() {
       case "message":
         log.debug(event);
         if (started) {
-          if (first) {
-            sendMessage("Dobby is back", event.threadID);
-            first = false;
+          if (event.body === "/stop") {
+            stop();
+          } else {
+            apiInstance.markAsRead(event.threadID, (err) => {
+              if (err) console.error(err);
+            });
+            checkMessage(event);
           }
-          apiInstance.markAsRead(event.threadID, (err) => {
-            if (err) console.error(err);
-          });
-          checkMessage(event);
         } else {
           log.info("Not started yet");
           if (event.body === "/start") {
@@ -102,7 +101,6 @@ function start() {
   log.info("Dobby is starting");
   started = true;
   listening = true;
-  first = true;
 }
 function isAuthenticated(cb) {
   return apiInstance !== null;
