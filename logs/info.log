@@ -3035,3 +3035,22 @@
 {"level":"info","message":"action megaphone added","timestamp":"2017-08-24T12:49:10.630Z"}
 {"level":"info","message":"action rekt added","timestamp":"2017-08-24T12:49:10.632Z"}
 {"level":"info","message":"Heroku hack configured to be called every 2 minutes","timestamp":"2017-08-24T12:49:10.650Z"}
+{"level":"info","message":"Logger configured","timestamp":"2017-08-24T13:06:22.625Z"}
+{"level":"info","message":"action tom added","timestamp":"2017-08-24T13:06:24.263Z"}
+{"level":"info","message":"action dobby added","timestamp":"2017-08-24T13:06:24.267Z"}
+{"level":"info","message":"action messageCount added","timestamp":"2017-08-24T13:06:24.273Z"}
+{"level":"info","message":"action bonjour added","timestamp":"2017-08-24T13:06:24.275Z"}
+{"level":"info","message":"action mort added","timestamp":"2017-08-24T13:06:24.277Z"}
+{"level":"info","message":"action random added","timestamp":"2017-08-24T13:06:24.280Z"}
+{"level":"info","message":"action chibre added","timestamp":"2017-08-24T13:06:24.282Z"}
+{"level":"info","message":"action topWord added","timestamp":"2017-08-24T13:06:24.285Z"}
+{"level":"info","message":"action changeColor added","timestamp":"2017-08-24T13:06:24.290Z"}
+{"level":"info","message":"action messageCountByPerson added","timestamp":"2017-08-24T13:06:24.293Z"}
+{"level":"info","message":"action randomMeme added","timestamp":"2017-08-24T13:06:24.296Z"}
+{"level":"info","message":"action avadakedavra added","timestamp":"2017-08-24T13:06:24.298Z"}
+{"level":"info","message":"action memegenerator added","timestamp":"2017-08-24T13:06:24.300Z"}
+{"level":"info","message":"action help added","timestamp":"2017-08-24T13:06:24.309Z"}
+{"level":"info","message":"action bonneplsalicia added","timestamp":"2017-08-24T13:06:24.311Z"}
+{"level":"info","message":"action megaphone added","timestamp":"2017-08-24T13:06:24.313Z"}
+{"level":"info","message":"action rekt added","timestamp":"2017-08-24T13:06:24.315Z"}
+{"level":"info","message":"Heroku hack configured to be called every 2 minutes","timestamp":"2017-08-24T13:06:24.335Z"}
