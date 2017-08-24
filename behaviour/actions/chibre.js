@@ -32,6 +32,7 @@ module.exports = {
   name: "chibre",
   description: "Réagit aux chibres",
   case: "s'active quand quelqu'un utilise un synonyme de chibre",
+  activated: true,
   isAccepted: condition,
   execute: execution
 };

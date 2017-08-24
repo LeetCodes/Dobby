@@ -129,6 +129,7 @@ function protegoMaxima(senderID, threadID, callback) {
 module.exports = {
   name: "avadakedavra",
   description: "avadakedavra [tempsEnSecondes] @Mention",
+  activated: true,
   isAccepted: condition,
   execute: execution
 };

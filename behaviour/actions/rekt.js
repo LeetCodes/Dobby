@@ -58,6 +58,7 @@ function execution (event, bot, callback) {
 module.exports = {
   name: "rekt",
   description: "YOU'RE REKT",
+  activated: true,
   isAccepted: condition,
   execute: execution
 };

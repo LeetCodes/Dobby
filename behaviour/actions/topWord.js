@@ -72,6 +72,7 @@ function formatInArray(top, bot, callback ) {
 module.exports = {
   name: "topWord",
   description: "tw [phrase]",
+  activated: true,
   isAccepted: condition,
   execute: execution
 };

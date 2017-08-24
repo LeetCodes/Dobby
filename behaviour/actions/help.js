@@ -27,9 +27,10 @@ function execution (event, bot, callback) {
 }
 
 module.exports = {
-  name: "commemonchibre",
-  description: "Dobby répond comme mon chibre",
-  case: "s'active quand on fait une allusion à la taille",
+  name: "help",
+  description: "/help",
+  case: "/help",
+  activated: true,
   isAccepted: condition,
   execute: execution
 };

@@ -27,20 +27,25 @@ function login(cb) {
       return cb(err);
     }
     apiInstance = api;
-    storeAllUnreadMessagesFromLastThreads(5, function (err, res) {
-      if (err) {
-        console.error(err);
-        if (cb) {
-          return cb(err);
+    if (process.env.NODE_ENV === 'PRODUCTION') {
+      storeAllUnreadMessagesFromLastThreads(5, function (err, res) {
+        if (err) {
+          console.error(err);
+          if (cb) {
+            return cb(err);
+          }
         }
-      }
-      log.info("All messages stored");
+        log.info("All messages stored");
+        started = true;
+        listen();
+        if (cb) {
+          cb();
+        }
+      });
+    } else {
       started = true;
       listen();
-      if (cb) {
-        cb();
-      }
-    })
+    }
   })
 }
 function listen() {
@@ -82,8 +87,6 @@ function listen() {
     }
   })
 }
-
-
 function checkMessage(event) {
   const message = event.body.trim().toLowerCase();
   if (message && message !== "") {
@@ -96,11 +99,16 @@ function checkMessage(event) {
     log.debug("[VERIFY MESSAGE] Message is undefined or null");
   }
 }
-
 function start() {
   log.info("Dobby is starting");
   started = true;
   listening = true;
+}
+function getStatus() {
+  let status = [];
+  status.push(started ? "started":"stopped");
+  status.push(listening ? "listening": "not listening");
+  return status;
 }
 function isAuthenticated(cb) {
   return apiInstance !== null;
@@ -331,6 +339,7 @@ let botModule = {
   listen: listen,
   isListening: isListening,
   stop: stop,
+  getStatus: getStatus,
   getThreadInfo: getThreadInfo,
   setMessageReaction: setMessageReaction,
   getSenderName: getSenderName,

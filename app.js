@@ -11,6 +11,7 @@ var routes = require('./routes/index');
 var users = require('./routes/user');
 var bot = require('./routes/bot');
 var botService = require('./behaviour/bot');
+const catalogue = require('./routes/catalogue');
 botService.login(callbackLoginRetry);
 herokuHack.callAlways();
 function callbackLoginRetry(err) {
@@ -43,9 +44,10 @@ app.use(bodyParser.urlencoded({
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', routes);
-app.use('/users', users);
-app.use('/bot', bot);
+app.use('/api/v1/', routes);
+app.use('/api/v1/users', users);
+app.use('/api/v1/bot', bot);
+app.use('/api/v1/catalogue', catalogue);
 
 /// catch 404 and forward to error handler
 app.use(function(req, res, next) {

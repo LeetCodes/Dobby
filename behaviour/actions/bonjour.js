@@ -64,6 +64,7 @@ module.exports = {
   name: "bonjour",
   description: "Il faut toujours dire bonjour",
   case: "s'active quand quelqu'un dit bonjour",
+  activated: true,
   isAccepted: condition,
   execute: execution
 };

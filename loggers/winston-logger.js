@@ -5,12 +5,11 @@
  * @date 10/07/2017
  */
 const winston = require('winston');
-const tsFormat = () => (new Date()).toLocaleTimeString();
 const logger = new (winston.Logger)({
   transports: [
     new winston.transports.File({
       level: 'info',
-      filename: '../logs/info.log',
+      filename: 'logs/info.log',
       handleExceptions: true,
       json: true,
       maxsize: 5242880, //5MB
@@ -18,7 +17,9 @@ const logger = new (winston.Logger)({
       colorize: false
     }),
     new (winston.transports.Console)({
-      timestamp: tsFormat(),
+      timestamp: function() {
+        return (new Date()).toLocaleTimeString();
+      },
       formatter: function(options) {
         // Return string will be passed to logger.
         return options.timestamp() +' ['+ options.level.toUpperCase() +'] '+ (options.message ? options.message : '') +

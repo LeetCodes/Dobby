@@ -5,11 +5,11 @@
  * @date 01/08/2017
  */
 const http = require('http');
-
+const log = require('./loggers/winston-logger');
 function call() {
   const options = {
     host: 'dobby141.herokuapp.com',
-    path: '/bot/hello',
+    path: 'api/v1/bot/herokuHack',
     method: 'GET',
     headers: {
       'Content-Type': 'application/json'
@@ -24,11 +24,9 @@ function call() {
 }
 
 function callAlways() {
-  console.log("CALL ALWAYS");
+  log.info("Heroku hack configured to be called every 2 minutes");
   setInterval(()=> {
-    console.log();
-    console.log("HEROKU HACK");
-    console.log();
+    log.debug("Heroku hack called");
     call();
   }, 1000*60*2);
 }

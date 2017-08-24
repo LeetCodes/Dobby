@@ -1,10 +1,16 @@
 /**
- * Created by A663945 on 03/07/2017.
+ * Project : 141Tops
+ * Package :
+ * @author Alexandre CAZALA <alexandre.cazala@gmail.com>
+ * @date 13/07/2017
  */
 var express = require('express');
 var router = express.Router();
 var controller = require('../controllers/bot');
 
-router.get('/start141', controller.startBot);
-router.get('/hello', controller.hello);
+router.get('/start', controller.startBot);
+router.get('/stop', controller.stopBot);
+router.get('/status', controller.getStatus);
+router.get('/herokuHack', controller.herokuHack);
+
 module.exports = router;

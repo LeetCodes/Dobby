@@ -17,6 +17,7 @@ function execution (event, bot, callback) {
 module.exports = {
   name: "mort",
   description: "réagit à la mort",
+  activated: true,
   isAccepted: condition,
   execute: execution
 };

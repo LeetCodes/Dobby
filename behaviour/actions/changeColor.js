@@ -25,6 +25,7 @@ function execution (event, bot, callback) {
 
 module.exports = {
   name: "changeColor",
+  activated: false,
   isAccepted: condition,
   execute: execution
 };

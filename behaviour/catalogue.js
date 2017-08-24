@@ -13,6 +13,16 @@ module.exports = function () {
     },
     push: (action) => {
       catalogue.push(action)
+    },
+    switchState: (name, state) => {
+      if (typeof(state) !== "boolean") {
+        return;
+      }
+      catalogue.forEach(function(action) {
+        if (action.name === name) {
+          action.activated = state;
+        }
+      })
     }
   };
 };

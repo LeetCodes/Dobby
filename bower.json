@@ -5,5 +5,12 @@
     "**/.*",
     "node_modules",
     "components"
-  ]
+  ],
+  "dependencies": {
+    "angular-http-auth": "^1.5.0",
+    "angular-ui": "^0.4.0",
+    "angular-route": "^1.6.6",
+    "html5-boilerplate": "^6.0.0",
+    "angular-material": "^1.1.4"
+  }
 }

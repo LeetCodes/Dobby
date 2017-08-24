@@ -31,23 +31,24 @@ actionFuncNames.map(function(v) {
 
 function addAction(action) {
   log.info("action added");
-  actionsCatalogue.push(action);
+  catalogue.push(action);
 }
 
 function checkAndExecuteAction(event, bot, cb) {
   log.info("check and execute action");
   catalogue.getCatalogue().forEach(function(action) {
-    action.isAccepted(event, function (err, res) {
-      if (err) {
-        return console.error(err);
-      }
-      if (res === true) {
-        action.execute(event, bot, cb);
-      }
-    })
+    if (action.activated) {
+      action.isAccepted(event, function (err, res) {
+        if (err) {
+          return console.error(err);
+        }
+        if (res === true) {
+          action.execute(event, bot, cb);
+        }
+      })
+    }
   });
 }
-
 module.exports = {
   addAction: addAction,
   checkAndExecuteAction: checkAndExecuteAction

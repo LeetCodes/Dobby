@@ -32,6 +32,7 @@ module.exports = {
   name: "dobby",
   description: "It's me Dobbyyy",
   case: "Dobby réagit quand on parle de lui",
+  activated: true,
   isAccepted: condition,
   execute: execution
 };

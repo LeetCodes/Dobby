@@ -38,6 +38,7 @@ function execution (event, bot, callback) {
 module.exports = {
   name: "megaphone",
   description: "UN PUTIN DE MEGAPHONE GROS !",
+  activated: true,
   isAccepted: condition,
   execute: execution
 };

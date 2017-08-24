@@ -37,6 +37,7 @@ module.exports = {
   name: "commemonchibre",
   description: "Dobby répond comme mon chibre",
   case: "s'active quand on fait une allusion à la taille",
+  activated: false,
   isAccepted: condition,
   execute: execution
 };

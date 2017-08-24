@@ -22,6 +22,7 @@ function execution (event, bot, callback) {
 module.exports = {
   name: "randomMeme",
   description: "/meme",
+  activated: true,
   isAccepted: condition,
   execute: execution
 };
