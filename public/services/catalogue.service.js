@@ -13,4 +13,14 @@ app.service('CatalogueService', function ($http) {
       url: '/api/v1/catalogue'
     });
   };
+
+  this.saveState = function (item) {
+    return $http({
+      method: 'PUT',
+      url: '/api/v1/catalogue/'+item.name+'/state',
+      data: {
+        state: item.activated
+      }
+    })
+  }
 });

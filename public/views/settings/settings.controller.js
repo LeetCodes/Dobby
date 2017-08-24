@@ -8,6 +8,16 @@ app.controller('SettingsCtrl', ['$scope', 'CatalogueService', function($scope, C
   /* INITIALIZERS */
   init();
 
+  /* SCOPE FUNCTIONS */
+
+  $scope.toggle = function (index) {
+    setTimeout(() => {
+      CatalogueService.saveState($scope.catalogue[index]).then(function (data) {
+        console.log(data);
+      });
+    }, 100)
+  };
+
   /* PRIVATE FUNCTIONS */
   function init() {
     getActions();
@@ -21,17 +31,4 @@ app.controller('SettingsCtrl', ['$scope', 'CatalogueService', function($scope, C
     });
   }
 
-  $scope.toggle = function (item, list) {
-  };
-
-  /**
-   * @return {boolean}
-   */
-  $scope.AreAllChecked = function() {
-    return checkedCpt === $scope.catalogue.length;
-  };
-
-  $scope.toggleAll = function() {
-
-  };
 }]);

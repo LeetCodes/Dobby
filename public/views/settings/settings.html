@@ -1,14 +1,11 @@
 <div class="row">
   <div class="col-md-2"></div>
   <div class="col-md-10">
-    <fieldset class="demo-fieldset" >
-      <legend class="demo-legend">Actions</legend>
-      <div class="form-check"  ng-repeat="item in catalogue">
-        <label class="form-check-label">
-          <input type="checkbox" class="form-check-input" ng-checked="item.activated">{{item.name}}
-        </label>
-      </div>
-    </fieldset>
+    <md-input-container class="md-block">
+      <md-switch ng-repeat="item in catalogue" ng-click="toggle($index)" class="md-primary" name="special" ng-model="item.activated">
+        {{item.name}}
+      </md-switch>
+    </md-input-container>
   </div>
 </div>
 

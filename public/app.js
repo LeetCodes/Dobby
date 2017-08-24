@@ -2,7 +2,8 @@
 
 // Declare app level module which depends on views, and components
 var app = angular.module('dobbydashboard', [
-  'ngRoute'
+  'ngRoute',
+  'ngMaterial'
 ]);
 
 app.config(['$routeProvider', function($routeProvider) {
