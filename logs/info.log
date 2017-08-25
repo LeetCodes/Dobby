@@ -3111,3 +3111,26 @@
 {"level":"info","message":"Call Save message","timestamp":"2017-08-24T13:27:38.695Z"}
 {"level":"info","message":"check and execute action","timestamp":"2017-08-24T13:27:38.699Z"}
 {"level":"info","message":"Call Save message","timestamp":"2017-08-24T13:27:38.700Z"}
+{"level":"info","message":"Logger configured","timestamp":"2017-08-25T08:24:37.619Z"}
+{"level":"info","message":"action tom added","timestamp":"2017-08-25T08:24:43.323Z"}
+{"level":"info","message":"action dobby added","timestamp":"2017-08-25T08:24:43.331Z"}
+{"level":"info","message":"action messageCount added","timestamp":"2017-08-25T08:24:43.345Z"}
+{"level":"info","message":"action bonjour added","timestamp":"2017-08-25T08:24:43.351Z"}
+{"level":"info","message":"action mort added","timestamp":"2017-08-25T08:24:43.358Z"}
+{"level":"info","message":"action random added","timestamp":"2017-08-25T08:24:43.364Z"}
+{"level":"info","message":"action chibre added","timestamp":"2017-08-25T08:24:43.370Z"}
+{"level":"info","message":"action topWord added","timestamp":"2017-08-25T08:24:43.383Z"}
+{"level":"info","message":"action changeColor added","timestamp":"2017-08-25T08:24:43.392Z"}
+{"level":"info","message":"action messageCountByPerson added","timestamp":"2017-08-25T08:24:43.400Z"}
+{"level":"info","message":"action randomMeme added","timestamp":"2017-08-25T08:24:43.409Z"}
+{"level":"info","message":"action avadakedavra added","timestamp":"2017-08-25T08:24:43.416Z"}
+{"level":"info","message":"action memegenerator added","timestamp":"2017-08-25T08:24:43.424Z"}
+{"level":"info","message":"action help added","timestamp":"2017-08-25T08:24:43.434Z"}
+{"level":"info","message":"action bonneplsalicia added","timestamp":"2017-08-25T08:24:43.440Z"}
+{"level":"info","message":"action megaphone added","timestamp":"2017-08-25T08:24:43.447Z"}
+{"level":"info","message":"action rekt added","timestamp":"2017-08-25T08:24:43.453Z"}
+{"level":"info","message":"Heroku hack configured to be called every 2 minutes","timestamp":"2017-08-25T08:24:43.485Z"}
+{"level":"info","message":"check and execute action","timestamp":"2017-08-25T08:24:59.437Z"}
+{"level":"info","message":"Call Save message","timestamp":"2017-08-25T08:24:59.442Z"}
+{"level":"info","message":"End Save message","timestamp":"2017-08-25T08:25:00.262Z"}
+{"level":"info","message":"Message envoyé au thread 1520977847 : [object Object]","timestamp":"2017-08-25T08:25:02.267Z"}
