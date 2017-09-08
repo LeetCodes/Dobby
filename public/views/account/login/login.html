@@ -1,0 +1,35 @@
+<form class="form-horizontal col-xs-10 col-xs-offset-1" ng-submit="logIn()">
+  <div class="form-group">
+    <label class="col-sm-3 control-label">Email</label>
+    <div class="col-sm-9">
+      <input type="text" class="form-control" id="userName" ng-model="user.email"
+             placeholder="@">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-3 control-label">Mot de passe</label>
+    <div class="col-sm-9">
+      <input type="password" class="form-control" id="mdp" ng-model="user.password"
+             placeholder="*******">
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-xs-12 text-center">
+      <a href="#" type="button" class="btn btn-default" data-dismiss="modal"
+         ng-click="logIn()">Connexion</a>
+    </div>
+  </div>
+  <input type="submit" value="submit" ng-show="false">
+</form>
+<div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist">
+  <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#!/login/#v-pills-home" role="tab" aria-controls="v-pills-home" aria-expanded="true">Home</a>
+  <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#!/login/#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-expanded="true">Profile</a>
+  <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#!/login/#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-expanded="true">Messages</a>
+  <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#!/login/#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-expanded="true">Settings</a>
+</div>
+<div class="tab-content" id="v-pills-tabContent">
+  <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">...</div>
+  <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">...</div>
+  <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">...</div>
+  <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">...</div>
+</div>

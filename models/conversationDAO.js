@@ -5,6 +5,7 @@
  * @date 07/07/2017
  */
 const mongoose = require('mongoose');
+const userDAO = require('./userDAO');
 const Conversation = require('./schemas/conversation');
 const Message = require('./schemas/message');
 const formatUtil = require('../utils/formatUtil');

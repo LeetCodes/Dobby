@@ -9,10 +9,16 @@ node_tmp/
 node_modules/
 npm-debug.log.*
 
+
 ######################
 # SASS
 ######################
 .sass-cache/
+
+######################
+# BOWER
+######################
+public/bower_components
 
 ######################
 # Eclipse
